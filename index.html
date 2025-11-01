@@ -1,46 +1,441 @@
-<html>
-    <head><title>MUHAMMAD IBRAHIM</title>
-    </head>
-        <body>
-            <h1>Muhammad Ibrahim</h1>
-            <img src="IB.jpg" alt="Foto IBe" width="80px">
-            <p>Saya adalah Muhammad Ibrahim mahasiswa fisika
-                <br>angkatan 2023 Universitas Hasanuddin </p>
-        <hr>
-        <h2>Pendidikan</h2>
-        <ul>
-            <li>TK ANGING MAMMIRI</li>
-            <li>SDN 78 Balang</li>
-            <li>SMP 3 GAL-SEL</li>
-            <li>SMAN 13 TAKALAR</li>
-            <li>UNIVERSITAS HASANUDDIN</li>
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portofolio — Muhammad Ibrahim</title>
+
+  <!-- Font (Google Fonts + Font Awesome for icons) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --cream: #FFF8F0;
+      --navy:  #001F3F;
+      --navy-2:#0B2545;
+      --muted: #6B7280;
+      --card:  #FFFDF8;
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, sans-serif;
+      background: linear-gradient(180deg,var(--cream) 0%, #FFFBF7 100%);
+      color: var(--navy-2);
+      line-height:1.45;
+    }
+
+    .container{max-width:980px;margin:28px auto;padding:20px;}
+
+    header.topnav{
+      position: sticky; top:12px; z-index:50;
+      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.4));
+      border-radius:12px; padding:10px 14px; display:flex; align-items:center; gap:12px;
+      box-shadow:0 6px 18px rgba(11,37,69,0.06); backdrop-filter:blur(6px);
+      border:1px solid rgba(1,31,63,0.05);
+    }
+    .brand{display:flex;gap:12px;align-items:center;}
+    .brand .avatar{width:54px;height:54px;border-radius:12px;object-fit:cover;border:3px solid var(--navy);}
+    .brand h1{font-size:18px;margin:0;color:var(--navy);font-weight:700}
+    .brand p{margin:0;font-size:12px;color:var(--navy-2);opacity:0.9}
+
+    nav.links{margin-left:auto;display:flex;gap:6px;}
+    nav.links a{
+      text-decoration:none;padding:8px 12px;border-radius:10px;
+      color:var(--navy-2);font-weight:600;font-size:13px;
+    }
+    nav.links a.active{background:var(--navy);color:var(--card);}
+    nav.links a:hover{background:rgba(1,31,63,0.06)}
+
+    main.section-wrap{margin-top:18px;display:grid;gap:18px;}
+    section.page{
+      background:var(--card);border-radius:var(--radius);padding:20px;
+      box-shadow:0 10px 30px rgba(11,37,69,0.04);
+      border:1px solid rgba(1,31,63,0.04);
+      display:none;
+    }
+    section.page.active{display:block;animation:fadeIn .45s ease both;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+    .muted{color:var(--muted);font-size:13px}
+    .card{background:linear-gradient(180deg,#fff 0%, #FFFCFB 100%);padding:12px;border-radius:12px;border:1px solid rgba(1,31,63,0.03);}
+
+    /* --- PENDIDIKAN INTERAKTIF --- */
+    .edu-list{display:grid;gap:10px;}
+    .edu-item{
+      background:#fff;border:1px solid rgba(1,31,63,0.05);
+      padding:10px 12px;border-radius:12px;cursor:pointer;
+      transition:background .2s,transform .2s;
+    }
+    .edu-item:hover{background:#FFF3E8;transform:translateY(-2px);}
+    .edu-item.active{background:#FFE8D1;border-color:rgba(1,31,63,0.15);}
+    .edu-detail{
+      display:none;margin-top:14px;align-items:flex-start;gap:16px;
+    }
+    .edu-detail.active{display:flex;}
+    .edu-detail img{
+      width:200px;height:150px;object-fit:cover;border-radius:12px;border:3px solid var(--navy);
+    }
+    .edu-desc{max-width:70%;}
+    .edu-desc h4{margin:0 0 6px 0;color:var(--navy);}
+    .edu-desc p{margin:0;font-size:14px;color:var(--navy-2);line-height:1.4;}
+
+    /* --- ORGANISASI --- */
+    .org-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:720px){.org-grid{grid-template-columns:1fr}}
+    .org{
+      padding:12px;border-radius:12px;background:linear-gradient(180deg,#FFFDF8 0%,#FFFFFF 100%);
+      border:1px solid rgba(1,31,63,0.03);
+      cursor:pointer;transition:transform 0.25s ease;
+    }
+    .org:hover{transform:translateY(-3px)}
+    .org h3{margin:0;color:var(--navy);font-size:15px}
+    .org .meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+    .carousel-thumb img{
+      width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px;
+      transition:transform .3s ease;
+    }
+    .carousel-thumb img:hover{transform:scale(1.03)}
+
+    /* --- SOSMED --- */
+    .social-list{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+    .social-list li a{
+      display:flex;align-items:center;gap:10px;text-decoration:none;
+      color:var(--navy-2);font-weight:600;padding:8px 10px;border-radius:10px;
+      background:rgba(255,255,255,0.5);transition:background .2s;
+    }
+    .social-list li a:hover{background:rgba(1,31,63,0.08);}
+    .social-list i{font-size:18px;width:24px;text-align:center;color:var(--navy);}
+
+    footer{text-align:center;color:var(--muted);font-size:13px;margin-top:14px}
+
+    /* --- Modal Galeri --- */
+    #gallery-modal{
+      display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);
+      z-index:9999;align-items:center;justify-content:center;
+    }
+    #gallery-modal img{
+      max-width:90vw;max-height:80vh;border-radius:12px;
+      box-shadow:0 0 30px rgba(0,0,0,0.6);
+    }
+    .gallery-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(255,255,255,0.2);border:none;color:white;
+      font-size:36px;padding:8px 14px;cursor:pointer;border-radius:8px;
+      transition:background .2s ease;
+    }
+    .gallery-btn:hover{background:rgba(255,255,255,0.35)}
+    #prev-btn{left:30px}
+    #next-btn{right:30px}
+    #close-btn{
+      position:absolute;top:25px;right:30px;background:none;
+      border:none;color:white;font-size:32px;cursor:pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="topnav">
+      <div class="brand">
+        <img class="avatar" src="ibe.jpeg" alt="Avatar">
+        <div>
+          <h1>Muhammad Ibrahim</h1>
+          <p>Mahasiswa Fisika</p>
+        </div>
+      </div>
+
+      <nav class="links">
+        <a href="#biodata" data-target="biodata" class="active">Biodata</a>
+        <a href="#education" data-target="education">Pendidikan</a>
+        <a href="#orgs" data-target="orgs">Organisasi</a>
+        <a href="#hobbies" data-target="hobbies">Hobi</a>
+        <a href="#socials" data-target="socials">Sosmed</a>
+      </nav>
+    </header>
+
+    <main class="section-wrap" id="app">
+
+      <!-- BIODATA -->
+      <section id="biodata" class="page active">
+        <div style="display:flex;gap:14px;align-items:center;">
+          <img src="ibe.jpeg" alt="avatar" style="width:124px;height:124px;border-radius:12px;object-fit:cover;border:4px solid var(--navy)">
+          <div>
+            <h2 style="margin:0;color:var(--navy)">Muhammad Ibrahim</h2>
+            <p class="muted" style="margin:6px 0 0 0">Mahasiswa Fisika</p>
+            <div class="card" style="margin-top:10px">
+              Halo! saya Muhammad Ibrahim. Saya percaya bahwa hidup adalah perjalanan untuk memahami diri dan alam semesta. Karena itu, saya memilih menekuni fisika teori — sebuah bidang yang mengajak kita berpikir lebih dalam tentang hakikat realitas dan waktu.
+              Hidup adalah tentang terus belajar, jatuh dan bangkit, hingga menemukan versi terbaik dari diri sendiri.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PENDIDIKAN INTERAKTIF -->
+<section id="education" class="page">
+  <h3 style="color:var(--navy)">Riwayat Pendidikan</h3>
+  <div class="edu-list">
+    <div class="edu-item"
+      data-imgs="lb.jpeg,lb2.jpeg,lb1.jpeg"
+      data-desc="Menempuh pendidikan di Universitas Hasanuddin pada program studi Fisika. Aktif dalam kegiatan laboratorium dan organisasi HIMAFI.">
+      Universitas Hasanuddin — S1 Fisika (2023 - sekarang)
+    </div>
+
+    <div class="edu-item"
+      data-imgs="re.jpeg,re1.jpeg,re2.jpeg"
+      data-desc="Belajar di jurusan IPA dengan fokus pada bidang sains. Aktif dalam kegiatan Paskibra dan OSIS.">
+      SMAN 13 Takalar — IPA (2020-2023)
+    </div>
+
+    <div class="edu-item"
+      data-imgs="re.jpeg,re1.jpeg,smpn3c.jpg"
+      data-desc="Mengikuti berbagai kegiatan ekstrakurikuler seperti Pramuka dan lomba akademik.">
+      SMPN 3 Galesong Selatan (2017-2020)
+    </div>
+
+    <div class="edu-item"
+      data-imgs="sd78a.jpg,sd78b.jpg,sd78c.jpg"
+      data-desc="Membangun dasar pendidikan dan disiplin melalui kegiatan Pramuka serta lomba sekolah.">
+      SDN 78 Balang (2011-2017)
+    </div>
+
+    <div class="edu-item"
+      data-imgs="tk1.jpg,tk2.jpg,tk3.jpg"
+      data-desc="Mengenal dunia pendidikan untuk pertama kalinya, belajar dasar membaca dan berhitung.">
+      TK Anging Mammiri (2009-2011)
+    </div>
+  </div>
+
+  <div class="edu-detail" id="edu-detail">
+    <div class="edu-gallery" id="edu-gallery"></div>
+    <div class="edu-desc">
+      <h4 id="edu-title">Pilih salah satu pendidikan</h4>
+      <p id="edu-text">Klik pada salah satu daftar pendidikan untuk melihat beberapa foto kegiatan dan deskripsinya.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .edu-item {
+    padding: 10px;
+    border-radius: 8px;
+    background: #f0f4ff;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .edu-item:hover,
+  .edu-item.active {
+    background: #d6e4ff;
+  }
+
+  .edu-detail {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-top: 2px solid #ccc;
+    padding-top: 15px;
+  }
+
+  .edu-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .edu-gallery img {
+    width: 30%;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .edu-desc h4 {
+    color: var(--navy);
+  }
+</style>
+
+<script>
+  (function(){
+    const items = document.querySelectorAll('.edu-item');
+    const detail = document.getElementById('edu-detail');
+    const gallery = document.getElementById('edu-gallery');
+    const title = document.getElementById('edu-title');
+    const text = document.getElementById('edu-text');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        // hilangkan aktif sebelumnya
+        items.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        // ambil gambar
+        const imgs = item.dataset.imgs.split(',').map(img => img.trim());
+        gallery.innerHTML = imgs.map(src => `<img src="${src}" alt="Foto Kegiatan">`).join('');
+
+        // ubah teks
+        title.textContent = item.textContent.trim();
+        text.textContent = item.dataset.desc;
+
+        // tampilkan detail
+        detail.classList.add('active');
+      });
+    });
+  })();
+</script>
+
+
+      <!-- ORGANISASI -->
+      <section id="orgs" class="page">
+        <h3 style="color:var(--navy)">Pengalaman Organisasi</h3>
+
+        <div class="org-grid">
+          <article class="org" data-images='["ibe1.jpeg","ibe2.jpeg"]'>
+            <h3>HIMAFI FMIPA Unhas</h3>
+            <div class="meta">Ketua Umum • 2025/2026</div>
+            <div class="carousel-thumb"><img src="ibe.jpeg" alt="HM Fisika"></div>
+          </article>
+
+          <article class="org" data-images='["p1.jpeg","p2.jpeg"]'>
+            <h3>PASKIBRA UNIT 113 UPT SMAN.13 TAKALAR</h3>
+            <div class="meta">Ketua Umum • 2022/2023</div>
+            <div class="carousel-thumb"><img src="PASKIB.jpeg" alt="Debat"></div>
+          </article>
+
+          <article class="org" data-images='["osis1.jpeg","osis2.jpeg"]'>
+            <h3>Osis UPT SMAN 13 TAKALAR</h3>
+            <div class="meta">Sekretaris • 2023 - 2024</div>
+            <div class="carousel-thumb"><img src="osis.jpeg" alt="OSIS"></div>
+          </article>
+
+          <article class="org" data-images='["pr1.jpeg","pr2.jpeg"]'>
+            <h3>PRAMUKA SMPN 3 Galesong Selatan</h3>
+            <div class="meta">Anggota • 2017 - 2018</div>
+            <div class="carousel-thumb"><img src="pr.jpeg" alt="PRAMUKA"></div>
+          </article>
+
+          <article class="org" data-images='["sd1.jpeg"]'>
+            <h3>PRAMUKA SDN 78 BALANG</h3>
+            <div class="meta">Pratama • 2015 - 2016</div>
+            <div class="carousel-thumb"><img src="sd2.jpeg" alt="PRAMUKA"></div>
+          </article>
+        </div>
+
+        <p class="muted" style="margin-top:12px">Klik organisasi untuk melihat foto-foto kegiatan.</p>
+      </section>
+
+      <!-- HOBI -->
+      <section id="hobbies" class="page">
+        <h3 style="color:var(--navy)">Hobi</h3>
+        <div class="card hobby" data-images='["bg.png","bg3.jpeg","bg2.jpeg","bg1.jpeg"]'>Mengedit</div>
+        <p class="muted" style="margin-top:8px">Klik hobi untuk melihat hasil atau kegiatan terkait.</p>
+      </section>
+
+      <!-- SOSMED -->
+      <section id="socials" class="page">
+        <h3 style="color:var(--navy)">Sosial Media</h3>
+        <ul class="social-list">
+          <li><a href="https://www.fiverr.com/s/pdv4e5R"><i class="fa-brands fa-fiverr"></i> Fiverr</a></li>
+          <li><a href="https://www.instagram.com/_ibrhmmhmmd"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          <li><a href="https://www.facebook.com/ibra.muh.54"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@miharbi221"><i class="fa-brands fa-tiktok"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@Ibraaahh"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
         </ul>
-        <h2>Skill</h2>
-        <ul>
-            <li>Vector illuistration</li>
-            <li>Grafphic design</li>
-        </ul>
-        <h2>Sosmed</h2>
-        <ul>
-             <LI><a href="https://www.fiverr.com/s/pdv4e5R">fiverr</a></LI>
-            <li> <a href="https://www.instagram.com/_ibrhmmhmmd?igsh=MW02bWJ0bW1ldml1NA==">Instagram</a> </li>
-            <li> <a href="https://www.facebook.com/ibra.muh.54">Facebook</a> </li>
-            <li> <a href="https://www.tiktok.com/@miharbi221?_t=ZS-900dDKTcoMC&_r=1">tiktok</a> </li>
-            <li><a href="https://www.youtube.com/@Ibraaahh">youtube</a></li>
-        </ul>
-        <h2>Riwayat Organisasi</h2>
-        <ul>
-            <li>PRAMUKA SDN 78 BALANG</li>
-            <li>PRAMUKA SMPN 3 GAL-SEL</li>
-            <li>KOORDINATOR HUMAS OSIS UPT SMAN 13 TAKALAR Periode (2022/2023)</li>
-            <LI>KETUA PANITIA PAGELARAN SENI UPT SMAN 13 TAKALAR (2023) </LI>
-            <li>KETUA UMUM PASKIBRA UNIT 113 UPT SMAN 13 TAKALAR Periode (2022/2023)</li>
-            <li>KETUA UMUM HIMAFI FMIPA Unhas Periode (2025/2026)</li>
-        </ul>
-        <footer>
-            <p>© 2025 Website Saya</p>
-        </footer>
-        </body>
+      </section>
+
+    </main>
+
+    <footer>
+      © <span id="year"></span> Muhammad Ibrahim
+    </footer>
+  </div>
+
+  <!-- Modal galeri -->
+  <div id="gallery-modal">
+    <button id="close-btn">✕</button>
+    <button id="prev-btn" class="gallery-btn">‹</button>
+    <img id="gallery-img" src="" alt="Gallery">
+    <button id="next-btn" class="gallery-btn">›</button>
+  </div>
+
+  <script>
+    // Navigasi halaman
+    (function(){
+      const links=document.querySelectorAll('nav.links a');
+      const pages=document.querySelectorAll('.page');
+      function showPage(id){
+        pages.forEach(p=>p.classList.toggle('active',p.id===id));
+        links.forEach(a=>a.classList.toggle('active',a.dataset.target===id));
+        history.replaceState(null,'','#'+id);
+      }
+      links.forEach(a=>a.addEventListener('click',e=>{
+        e.preventDefault();showPage(a.dataset.target);
+      }));
+      const hash=location.hash.replace('#','');
+      if(hash&&document.getElementById(hash))showPage(hash);
+      else showPage('biodata');
+      document.getElementById('year').textContent=new Date().getFullYear();
+    })();
+
+    // Galeri organisasi & hobi
+    (function(){
+      const modal=document.getElementById('gallery-modal');
+      const imgEl=document.getElementById('gallery-img');
+      const prev=document.getElementById('prev-btn');
+      const next=document.getElementById('next-btn');
+      const close=document.getElementById('close-btn');
+      let imgs=[],index=0;
+
+      function showImage(i){
+        if(!imgs.length)return;
+        index=(i+imgs.length)%imgs.length;
+        imgEl.src=imgs[index];
+      }
+
+      prev.onclick=()=>showImage(index-1);
+      next.onclick=()=>showImage(index+1);
+      close.onclick=()=>modal.style.display='none';
+      modal.addEventListener('click',e=>{if(e.target===modal)modal.style.display='none';});
+
+      document.querySelectorAll('.org, .hobby').forEach(item=>{
+        const data=JSON.parse(item.dataset.images||'[]');
+        item.addEventListener('click',()=>{
+          if(!data.length)return;
+          imgs=data;index=0;showImage(index);
+          modal.style.display='flex';
+        });
+      });
+    })();
+
+    // Interaktif Pendidikan
+    (function(){
+      const items=document.querySelectorAll('.edu-item');
+      const detail=document.getElementById('edu-detail');
+      const img=detail.querySelector('img');
+      const title=document.getElementById('edu-title');
+      const text=document.getElementById('edu-text');
+
+      items.forEach(item=>{
+        item.addEventListener('click',()=>{
+          items.forEach(i=>i.classList.remove('active'));
+          item.classList.add('active');
+          img.src=item.dataset.img;
+          title.textContent=item.textContent.trim();
+          text.textContent=item.dataset.desc;
+          detail.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
 </html>
-
-
