@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Portofolio — Muhammad Ibrahim</title>
 
-  <!-- Font (Google Fonts + Font Awesome for icons) -->
+  <!-- Font & Icon -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -22,33 +22,56 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: "Inter", system-ui, sans-serif;
-      background: linear-gradient(180deg,var(--cream) 0%, #FFFBF7 100%);
-      color: var(--navy-2);
+      font-family:"Inter",system-ui,sans-serif;
+      background:linear-gradient(180deg,var(--cream) 0%,#FFFBF7 100%);
+      color:var(--navy-2);
       line-height:1.45;
     }
 
     .container{max-width:980px;margin:28px auto;padding:20px;}
 
     header.topnav{
-      position: sticky; top:12px; z-index:50;
-      background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.4));
-      border-radius:12px; padding:10px 14px; display:flex; align-items:center; gap:12px;
-      box-shadow:0 6px 18px rgba(11,37,69,0.06); backdrop-filter:blur(6px);
+      background:linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.45));
+      border-radius:12px;padding:14px;
+      box-shadow:0 6px 18px rgba(11,37,69,0.06);
+      backdrop-filter:blur(6px);
       border:1px solid rgba(1,31,63,0.05);
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:12px;
     }
+
     .brand{display:flex;gap:12px;align-items:center;}
     .brand .avatar{width:54px;height:54px;border-radius:12px;object-fit:cover;border:3px solid var(--navy);}
     .brand h1{font-size:18px;margin:0;color:var(--navy);font-weight:700}
     .brand p{margin:0;font-size:12px;color:var(--navy-2);opacity:0.9}
 
-    nav.links{margin-left:auto;display:flex;gap:6px;}
-    nav.links a{
-      text-decoration:none;padding:8px 12px;border-radius:10px;
-      color:var(--navy-2);font-weight:600;font-size:13px;
+    /* MENU VERTIKAL */
+    nav.links{
+      display:flex;
+      flex-direction:column;
+      width:100%;
+      gap:8px;
+      margin-top:8px;
     }
-    nav.links a.active{background:var(--navy);color:var(--card);}
-    nav.links a:hover{background:rgba(1,31,63,0.06)}
+    nav.links a{
+      width:100%;
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:10px;
+      color:var(--navy-2);
+      font-weight:600;
+      font-size:14px;
+      transition:background 0.2s;
+    }
+    nav.links a.active{
+      background:var(--navy);
+      color:var(--card);
+    }
+    nav.links a:hover{
+      background:rgba(1,31,63,0.06);
+    }
 
     main.section-wrap{margin-top:18px;display:grid;gap:18px;}
     section.page{
@@ -64,7 +87,7 @@
     .card{background:linear-gradient(180deg,#fff 0%, #FFFCFB 100%);padding:12px;border-radius:12px;border:1px solid rgba(1,31,63,0.03);}
 
     /* --- PENDIDIKAN INTERAKTIF --- */
-    .edu-list{display:grid;gap:10px;}
+    .edu-list{display:flex;flex-direction:column;gap:10px;}
     .edu-item{
       background:#fff;border:1px solid rgba(1,31,63,0.05);
       padding:10px 12px;border-radius:12px;cursor:pointer;
@@ -174,171 +197,71 @@
         </div>
       </section>
 
-      <!-- PENDIDIKAN INTERAKTIF -->
-<section id="education" class="page">
-  <h3 style="color:var(--navy)">Riwayat Pendidikan</h3>
-  <div class="edu-list">
-    <div class="edu-item"
-      data-imgs="lb.jpeg,lb2.jpeg,lb1.jpeg"
-      data-desc="Menempuh pendidikan di Universitas Hasanuddin pada program studi Fisika. Aktif dalam kegiatan laboratorium dan organisasi HIMAFI.">
-      Universitas Hasanuddin — S1 Fisika (2023 - sekarang)
-    </div>
+      <!-- PENDIDIKAN -->
+      <section id="education" class="page">
+        <h3 style="color:var(--navy)">Riwayat Pendidikan</h3>
+        <div class="edu-list">
+          <div class="edu-item" data-imgs="lb.jpeg,lb2.jpeg,lb1.jpeg" data-desc="Menempuh pendidikan di Universitas Hasanuddin pada program studi Fisika. Aktif dalam kegiatan laboratorium dan organisasi HIMAFI.">
+            Universitas Hasanuddin — S1 Fisika (2023 - sekarang)
+          </div>
 
-    <div class="edu-item"
-      data-imgs="re.jpeg,re1.jpeg,re2.jpeg"
-      data-desc="Belajar di jurusan IPA dengan fokus pada bidang sains. Aktif dalam kegiatan Paskibra dan OSIS.">
-      SMAN 13 Takalar — IPA (2020-2023)
-    </div>
+          <div class="edu-item" data-imgs="re.jpeg,re1.jpeg,re2.jpeg" data-desc="Belajar di jurusan IPA dengan fokus pada bidang sains. Aktif dalam kegiatan Paskibra dan OSIS.">
+            SMAN 13 Takalar — IPA (2020-2023)
+          </div>
 
-    <div class="edu-item"
-      data-imgs="re.jpeg,re1.jpeg,smpn3c.jpg"
-      data-desc="Mengikuti berbagai kegiatan ekstrakurikuler seperti Pramuka dan lomba akademik.">
-      SMPN 3 Galesong Selatan (2017-2020)
-    </div>
+          <div class="edu-item" data-imgs="re.jpeg,re1.jpeg,smpn3c.jpg" data-desc="Mengikuti berbagai kegiatan ekstrakurikuler seperti Pramuka dan lomba akademik.">
+            SMPN 3 Galesong Selatan (2017-2020)
+          </div>
 
-    <div class="edu-item"
-      data-imgs="sd78a.jpg,sd78b.jpg,sd78c.jpg"
-      data-desc="Membangun dasar pendidikan dan disiplin melalui kegiatan Pramuka serta lomba sekolah.">
-      SDN 78 Balang (2011-2017)
-    </div>
+          <div class="edu-item" data-imgs="sd78a.jpg,sd78b.jpg,sd78c.jpg" data-desc="Membangun dasar pendidikan dan disiplin melalui kegiatan Pramuka serta lomba sekolah.">
+            SDN 78 Balang (2011-2017)
+          </div>
 
-    <div class="edu-item"
-      data-imgs="tk1.jpg,tk2.jpg,tk3.jpg"
-      data-desc="Mengenal dunia pendidikan untuk pertama kalinya, belajar dasar membaca dan berhitung.">
-      TK Anging Mammiri (2009-2011)
-    </div>
-  </div>
+          <div class="edu-item" data-imgs="tk1.jpg,tk2.jpg,tk3.jpg" data-desc="Mengenal dunia pendidikan untuk pertama kalinya, belajar dasar membaca dan berhitung.">
+            TK Anging Mammiri (2009-2011)
+          </div>
+        </div>
 
-  <div class="edu-detail" id="edu-detail">
-    <div class="edu-gallery" id="edu-gallery"></div>
-    <div class="edu-desc">
-      <h4 id="edu-title">Pilih salah satu pendidikan</h4>
-      <p id="edu-text">Klik pada salah satu daftar pendidikan untuk melihat beberapa foto kegiatan dan deskripsinya.</p>
-    </div>
-  </div>
-</section>
-
-<style>
-  .edu-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .edu-item {
-    padding: 10px;
-    border-radius: 8px;
-    background: #f0f4ff;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .edu-item:hover,
-  .edu-item.active {
-    background: #d6e4ff;
-  }
-
-  .edu-detail {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    border-top: 2px solid #ccc;
-    padding-top: 15px;
-  }
-
-  .edu-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .edu-gallery img {
-    width: 30%;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-
-  .edu-desc h4 {
-    color: var(--navy);
-  }
-</style>
-
-<script>
-  (function(){
-    const items = document.querySelectorAll('.edu-item');
-    const detail = document.getElementById('edu-detail');
-    const gallery = document.getElementById('edu-gallery');
-    const title = document.getElementById('edu-title');
-    const text = document.getElementById('edu-text');
-
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        // hilangkan aktif sebelumnya
-        items.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-
-        // ambil gambar
-        const imgs = item.dataset.imgs.split(',').map(img => img.trim());
-        gallery.innerHTML = imgs.map(src => `<img src="${src}" alt="Foto Kegiatan">`).join('');
-
-        // ubah teks
-        title.textContent = item.textContent.trim();
-        text.textContent = item.dataset.desc;
-
-        // tampilkan detail
-        detail.classList.add('active');
-      });
-    });
-  })();
-</script>
-
+        <div class="edu-detail" id="edu-detail">
+          <div class="edu-gallery" id="edu-gallery"></div>
+          <div class="edu-desc">
+            <h4 id="edu-title">Pilih salah satu pendidikan</h4>
+            <p id="edu-text">Klik pada salah satu daftar pendidikan untuk melihat beberapa foto kegiatan dan deskripsinya.</p>
+          </div>
+        </div>
+      </section>
 
       <!-- ORGANISASI -->
       <section id="orgs" class="page">
         <h3 style="color:var(--navy)">Pengalaman Organisasi</h3>
-
         <div class="org-grid">
           <article class="org" data-images='["ibe1.jpeg","ibe2.jpeg"]'>
             <h3>HIMAFI FMIPA Unhas</h3>
             <div class="meta">Ketua Umum • 2025/2026</div>
             <div class="carousel-thumb"><img src="ibe.jpeg" alt="HM Fisika"></div>
           </article>
-
           <article class="org" data-images='["p1.jpeg","p2.jpeg"]'>
             <h3>PASKIBRA UNIT 113 UPT SMAN.13 TAKALAR</h3>
             <div class="meta">Ketua Umum • 2022/2023</div>
-            <div class="carousel-thumb"><img src="PASKIB.jpeg" alt="Debat"></div>
+            <div class="carousel-thumb"><img src="PASKIB.jpeg" alt="Paskibra"></div>
           </article>
-
           <article class="org" data-images='["osis1.jpeg","osis2.jpeg"]'>
-            <h3>Osis UPT SMAN 13 TAKALAR</h3>
+            <h3>OSIS UPT SMAN 13 TAKALAR</h3>
             <div class="meta">Sekretaris • 2023 - 2024</div>
             <div class="carousel-thumb"><img src="osis.jpeg" alt="OSIS"></div>
           </article>
-
           <article class="org" data-images='["pr1.jpeg","pr2.jpeg"]'>
             <h3>PRAMUKA SMPN 3 Galesong Selatan</h3>
             <div class="meta">Anggota • 2017 - 2018</div>
-            <div class="carousel-thumb"><img src="pr.jpeg" alt="PRAMUKA"></div>
-          </article>
-
-          <article class="org" data-images='["sd1.jpeg"]'>
-            <h3>PRAMUKA SDN 78 BALANG</h3>
-            <div class="meta">Pratama • 2015 - 2016</div>
-            <div class="carousel-thumb"><img src="sd2.jpeg" alt="PRAMUKA"></div>
+            <div class="carousel-thumb"><img src="pr.jpeg" alt="Pramuka"></div>
           </article>
         </div>
-
-        <p class="muted" style="margin-top:12px">Klik organisasi untuk melihat foto-foto kegiatan.</p>
       </section>
 
       <!-- HOBI -->
       <section id="hobbies" class="page">
         <h3 style="color:var(--navy)">Hobi</h3>
         <div class="card hobby" data-images='["bg.png","bg3.jpeg","bg2.jpeg","bg1.jpeg"]'>Mengedit</div>
-        <p class="muted" style="margin-top:8px">Klik hobi untuk melihat hasil atau kegiatan terkait.</p>
       </section>
 
       <!-- SOSMED -->
@@ -355,12 +278,10 @@
 
     </main>
 
-    <footer>
-      © <span id="year"></span> Muhammad Ibrahim
-    </footer>
+    <footer>© <span id="year"></span> Muhammad Ibrahim</footer>
   </div>
 
-  <!-- Modal galeri -->
+  <!-- Modal Galeri -->
   <div id="gallery-modal">
     <button id="close-btn">✕</button>
     <button id="prev-btn" class="gallery-btn">‹</button>
@@ -369,7 +290,7 @@
   </div>
 
   <script>
-    // Navigasi halaman
+    // Navigasi antar halaman
     (function(){
       const links=document.querySelectorAll('nav.links a');
       const pages=document.querySelectorAll('.page');
@@ -417,19 +338,19 @@
       });
     })();
 
-    // Interaktif Pendidikan
+    // Pendidikan interaktif
     (function(){
       const items=document.querySelectorAll('.edu-item');
       const detail=document.getElementById('edu-detail');
-      const img=detail.querySelector('img');
+      const gallery=document.getElementById('edu-gallery');
       const title=document.getElementById('edu-title');
       const text=document.getElementById('edu-text');
-
       items.forEach(item=>{
         item.addEventListener('click',()=>{
           items.forEach(i=>i.classList.remove('active'));
           item.classList.add('active');
-          img.src=item.dataset.img;
+          const imgs=item.dataset.imgs.split(',');
+          gallery.innerHTML=imgs.map(i=>`<img src="${i.trim()}" alt="" style="width:160px;height:120px;border-radius:10px;object-fit:cover;border:2px solid var(--navy)">`).join('');
           title.textContent=item.textContent.trim();
           text.textContent=item.dataset.desc;
           detail.classList.add('active');
